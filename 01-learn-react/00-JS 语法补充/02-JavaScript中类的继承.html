@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>类的继承</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        constructor(name) {
+          this.name = name;
+        }
+        run() {
+          console.log("running...");
+        }
+      }
+      class Student extends Person {
+        constructor(name, num) {
+          super(name);
+          this.num = num;
+        }
+      }
+
+      class Teacher extends Person {
+        constructor(name, course) {
+          super(name);
+          this.course = course;
+        }
+      }
+
+      const s = new Student("Jack", 111);
+      console.log(s.name);
+      s.run();
+      const t = new Teacher("Mr.Lee", "Chinese");
+      console.log(t.name);
+      t.run();
+    </script>
+  </body>
+</html>

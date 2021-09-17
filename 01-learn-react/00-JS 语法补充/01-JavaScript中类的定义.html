@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES 5、6 类</title>
+  </head>
+  <body>
+    <script>
+      // ES 5类，使用的是function
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      Person.prototype.running = function () {
+        console.log(this);
+        console.log(this.name, this.age, "running");
+      };
+      var p = new Person("Graham", 18);
+      console.log(p.name, p.age);
+      p.running();
+
+      // ES 6类，使用class关键字
+      class Student {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        study() {
+          console.log(this.name, this.age, "studying...");
+        }
+      }
+
+      const s = new Student("Leo", 20);
+      s.study();
+
+      // this的指向
+      const fn = p.running;
+      fn(); // window
+
+      var obj = {
+        name: "Sam",
+        age: 30,
+      };
+      // 重新给func赋值
+      let func = fn.bind(obj);
+      func();
+    </script>
+  </body>
+</html>

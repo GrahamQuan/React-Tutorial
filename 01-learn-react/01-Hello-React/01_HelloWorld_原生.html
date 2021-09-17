@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello react</title>
+  </head>
+  <body>
+    <!-- 原生js实现点击修改msg -->
+    <!-- 命令是编程 -->
+    <h2 class="msg"></h2>
+    <button class="btn">change</button>
+    <script>
+      let message = "hello world";
+      const h2Elm = document.getElementsByClassName("msg")[0];
+      h2Elm.innerHTML = message;
+      const btnElm = document.getElementsByClassName("btn")[0];
+      btnElm.addEventListener("click", () => {
+        // console.log("btn clicked");
+        message = "hello react";
+        h2Elm.innerHTML = message;
+      });
+    </script>
+  </body>
+</html>

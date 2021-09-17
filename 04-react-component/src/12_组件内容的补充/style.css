@@ -1,0 +1,10 @@
+#model {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+
+  border: 1px solid red;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

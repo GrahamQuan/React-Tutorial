@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello react</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- 引入react的cdn文件资源 -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 注意script标签要加一个属性才能用jsx -->
+    <!-- 写jsx代码 -->
+    <script type="text/babel">
+      // class组件，需要继承
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            isLogin: true
+          };
+        }
+        render() {
+          const { isLogin } = this.state
+          // 方式1：if判断
+          let message = "请先登录"
+          if (isLogin) {
+            message = "欢迎回来"
+          }
+          return (
+            <div>
+              <h2> {message} </h2>
+              {/* 方式2：三元运算符 */}
+              <button onClick={ e => this.btnClick() }>{ isLogin ? "log out" : "login"}</button>
+              <hr/>
+              {/* 方式3：逻辑与 && */}
+              <h2>{ isLogin && "hi GQ" }</h2>
+              { isLogin && <h2>hello GQ</h2> }
+            </div>
+          )
+
+        }
+
+        btnClick(){
+          // console.log("btn clicked");
+          this.setState({
+            isLogin: !this.state.isLogin
+          })
+        }
+      }
+      // 参数1是挂载的组件，参数2是挂载的节点
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

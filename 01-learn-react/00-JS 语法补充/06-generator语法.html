@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>generator: 生成器</title>
+</head>
+<body>
+  <script>
+    // generator: 生成器
+    // 1. 普通函数
+    function foo() {
+      console.log('foo执行');
+    }
+
+    foo();
+
+    // 2.generator生成器函数
+    function* bar() {
+      console.log(111);
+      yield 'hello';
+      console.log(222);
+      yield 'world';
+      console.log(333);
+      yield 'react';
+    }
+
+    const result = bar();
+    console.log(result);
+
+    // 3. 使用generator
+    const res1 = result.next();
+    console.log('res1', res1);
+    const res2 = result.next();
+    console.log('res2', res2);
+    const res3 = result.next();
+    console.log('res3', res3);
+    const res4 = result.next();
+    console.log('res4', res4);
+
+    // 4.小练习
+    function* generatorNum() {
+      for (var i = 0; i <= 10; i++) {
+        yield i;
+      }
+    }
+
+    console.log(`generatorNum: ${generatorNum().next().value}`);
+
+    // 5.generator和Promise一起来使用
+    function* generatorPromise () {
+      const result = yield new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('generatorPromise');
+        }, 2000);
+      })
+      console.log(`result: ${result}`);
+    }
+
+    const myPromise = generatorPromise();
+    myPromise.next().value.then(res => {
+      myPromise.next(res)
+    })
+
+  </script>
+</body>
+</html>

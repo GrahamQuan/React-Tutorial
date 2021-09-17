@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello react</title>
+  </head>
+  <body>
+    <button id="js">js</button>
+    <script>
+      document.getElementById("js").addEventListener("click", event => {
+        console.log(event);
+      })
+    </script>
+    <hr>
+    <div id="app"></div>
+    <!-- 引入react的cdn文件资源 -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 注意script标签要加一个属性才能用jsx -->
+    <!-- 写jsx代码 -->
+    <script type="text/babel">
+      // class组件，需要继承
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "hello react",
+            movies: ["aaa", 'bbb', 'ccc','ddd']
+          };
+        }
+        render() {
+          return (
+            <div>
+              <button onClick={this.btnClick}>react</button>
+              <hr/>
+              <ul>
+                { 
+                  this.state.movies.map( (item, index, arr) => {
+                  return (
+                    <li className="box"
+                      onClick={ (event) => {this.liClick(item, index, event)} }
+                      title="li...">
+                    {item}
+                    </li>
+                  )
+                })
+              }
+              </ul>
+            </div>
+          )
+        }
+        btnClick(event){
+          console.log(event);
+        }
+        liClick(item, index, event){
+          console.log("li clicked", item, index, event);
+        }
+      }
+      // 参数1是挂载的组件，参数2是挂载的节点
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

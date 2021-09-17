@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello react</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- 引入react的cdn文件资源 -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 注意script标签要加一个属性才能用jsx -->
+    <!-- 写jsx代码 -->
+    <script type="text/babel">
+      // 图片裁剪工具类（开发的时候会抽取出来）
+      function getImgBySize(imgUrl, size){
+        return imgUrl + `?param=${size}x${size}`
+      }
+
+      // class组件，需要继承
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            title: "title...",
+            imgUrl: "https://p2.music.126.net/rEcJtZ9ZOtSupWMFl9VOkA==/109951166262846417.jpg",
+            bingUrl: "https://bing.com",
+            active: true 
+          };
+        }
+
+        render() {
+          const { title, imgUrl, bingUrl, active } = this.state
+
+          return (
+            <div>
+              {/* 1.绑定普通属性 */}
+              <h2 title={title}>h2 title</h2>
+              <img src={getImgBySize(imgUrl, 140)} alt=""/><br/>
+              <a href={bingUrl} target="_blank">Bing</a>
+
+              {/* 2.绑定class */}
+              <div className="box title">div 1</div>
+              <div className={"box title " + (active ? "active1" : "" )}>div 2</div>
+
+              {/* 3.绑定style */}
+              <div style={ {color: "red", fontSize: "30px"} }>div 3</div>
+            
+            </div>
+          )
+        }
+      }
+      // 参数1是挂载的组件，参数2是挂载的节点
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

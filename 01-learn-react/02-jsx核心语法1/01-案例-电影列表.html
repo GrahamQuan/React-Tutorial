@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例-电影列表</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- 引入react的cdn文件资源 -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- jsx -->
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "hello react",
+            movies: ["星际穿越", "大话西游", "寻梦幻游记", "教父"],
+          };
+        }
+        render() {
+          // 方式1 for of 遍历数组
+          let arr = [];
+          for (const item of this.state.movies) {
+            arr.push(<li>{item}</li>);
+          }
+          // 方式2 使用map
+          return (
+            <div>
+              <h2>电影系列1</h2>
+              <ul>
+                <li>{arr}</li>
+              </ul>
+              <h2>电影系列2</h2>
+              <ul>
+                {this.state.movies.map((item) => {
+                  return <li>{item}</li>;
+                })}
+              </ul>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>监听hash的改变</title>
+  <style>
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <a href="#/home">home</a>
+    <a href="#/about">about</a>
+    <div class='router-view'></div>
+  </div>
+  
+  <script>
+    const routerViewEl = document.getElementsByClassName('router-view')[0]
+    // 默认是首页
+    routerViewEl.innerHTML = 'home'
+
+    // 监听hash改变事件
+    window.addEventListener('hashchange', () => {
+      console.log('hashchange', location.hash);
+      switch (location.hash) {
+        case '#/home':
+          routerViewEl.innerHTML = 'home'
+          break;
+        case '#/about':
+          routerViewEl.innerHTML = 'about'
+          break;
+        default:
+          break;
+      }
+    });
+
+  </script>
+</body>
+</html>

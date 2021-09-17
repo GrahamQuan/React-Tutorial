@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  display: flex;
+  line-height: 44px;
+}
+
+.nav-item {
+  text-align: center;
+  height: 44px;
+}
+
+.left, .right{
+  width: 50px;
+  background-color: pink;
+}
+
+.center {
+  flex: 1;
+  background-color: seagreen;
+}

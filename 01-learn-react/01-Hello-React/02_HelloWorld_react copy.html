@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello react</title>
+  </head>
+  <body>
+    <div id="app">app</div>
+
+    <!-- 引入react的cdn文件资源 -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 注意script标签要加一个属性才能用jsx -->
+    <!-- 写jsx代码 -->
+    <script type="text/babel">
+      let message = "hello react";
+      // 参数1：要挂载的内容；参数2：要挂载的dom结点
+      ReactDOM.render(<h2>{message}</h2>, document.getElementById("app"));
+    </script>
+  </body>
+</html>
